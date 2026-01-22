@@ -1,0 +1,28 @@
+{
+  "name": "Alex Dev",
+  "role": "Cloud Infrastructure & DevOps Engineer",
+  "bio": "Specializing in resilient AWS architectures, Kubernetes orchestration, and Infrastructure as Code. I bridge the gap between complex backend systems and operational excellence.",
+  "socials": {
+    "email": "alex@example.com",
+    "github": "https://github.com",
+    "linkedin": "https://linkedin.com"
+  },
+  "skills": [
+    {
+      "category": "Cloud & Infrastructure",
+      "items": ["AWS (Solutions Architect)", "Terraform", "CloudFormation", "Docker", "Kubernetes"]
+    },
+    {
+      "category": "CI/CD & DevOps",
+      "items": ["GitHub Actions", "Jenkins", "ArgoCD", "Prometheus", "Grafana"]
+    },
+    {
+      "category": "Backend & Scripting",
+      "items": ["Python", "Node.js", "Bash", "Go", "PostgreSQL"]
+    },
+    {
+      "category": "Tools",
+      "items": ["Git", "Jira", "Linux", "Ansible", "Vite"]
+    }
+  ]
+}

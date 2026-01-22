@@ -1,0 +1,58 @@
+[
+  {
+    "id": "serverless-image-pipeline",
+    "title": "Event-Driven Image Processing Pipeline",
+    "summary": "A serverless architecture handling 10k+ daily image uploads using S3, Lambda, and Rekognition for automated tagging.",
+    "tags": ["AWS Lambda", "S3", "EventBridge", "Python"],
+    "details": {
+      "problem": "The legacy application processed images on a single EC2 instance, leading to bottlenecks during traffic spikes and high costs during idle time.",
+      "architecture": "Decoupled architecture using S3 Event Notifications to trigger asynchronous Lambda functions. Used SQS for Dead Letter Queues to ensure fault tolerance.",
+      "aws_services": [
+        "**S3**: Durable storage for raw and processed images.",
+        "**Lambda**: Compute layer for resizing and calling Rekognition.",
+        "**Rekognition**: AI/ML service for content moderation and tagging.",
+        "**DynamoDB**: Stores metadata state and processing status."
+      ],
+      "networking_security": "Lambda functions run inside a private VPC. IAM roles adhere to least-privilege principles. S3 buckets block public access via bucket policies.",
+      "implementation": [
+        "Defined infrastructure using Terraform modules.",
+        "Implemented Python (Boto3) logic for image resizing.",
+        "Configured S3 event triggers for suffix .jpg.",
+        "Set up CloudWatch Alarms for error rates."
+      ],
+      "iac_code": "resource \"aws_lambda_function\" \"processor\" {\n  filename      = \"lambda.zip\"\n  function_name = \"img-processor\"\n  role          = aws_iam_role.iam_for_lambda.arn\n  handler       = \"index.handler\"\n  runtime       = \"python3.9\"\n}",
+      "monitoring": "CloudWatch Dashboards track invocation counts and duration. X-Ray enabled for tracing requests across services.",
+      "cost": "Replaced always-on t3.medium ($30/mo) with pay-per-use Lambda (<$5/mo). Configured S3 Lifecycle policies to move raw images to Glacier after 30 days.",
+      "tradeoffs": "Cold starts were initially an issue (approx 1s). Mitigated by using Provisioned Concurrency for expected traffic spikes.",
+      "outcome": "Reduced processing latency by 60% and infrastructure costs by 85%. Zero maintenance overhead for patching servers."
+    }
+  },
+  {
+    "id": "eks-microservices",
+    "title": "FinTech Microservices on EKS",
+    "summary": "Migration of a monolithic payment gateway to a microservices architecture orchestrated by Amazon EKS with Istio service mesh.",
+    "tags": ["EKS", "Terraform", "Istio", "Argocd"],
+    "details": {
+      "problem": "Development velocity slowed due to tight coupling. Deploying a small fix required redeploying the entire monolith, causing downtime risks.",
+      "architecture": "Hub-and-spoke network topology. EKS cluster hosted in private subnets. Application Load Balancer (ALB) handles ingress traffic routing to Istio Gateway.",
+      "aws_services": [
+        "**EKS**: Managed Kubernetes control plane.",
+        "**ECR**: Container registry with image scanning.",
+        "**RDS Aurora**: High-performance relational database.",
+        "**ElastiCache**: Redis layer for session management."
+      ],
+      "networking_security": "Security Groups restrict pod-to-pod communication. OIDC provider configured for IRSA (IAM Roles for Service Accounts).",
+      "implementation": [
+        "Containerized legacy Java Spring Boot apps.",
+        "Provisioned EKS cluster v1.27 using eksctl.",
+        "Implemented GitOps workflow using ArgoCD.",
+        "Configured Horizontal Pod Autoscaling (HPA)."
+      ],
+      "iac_code": "module \"eks\" {\n  source  = \"terraform-aws-modules/eks/aws\"\n  version = \"19.0\"\n  cluster_name    = \"fintech-prod\"\n  cluster_version = \"1.27\"\n  vpc_id          = module.vpc.vpc_id\n  subnet_ids      = module.vpc.private_subnets\n}",
+      "monitoring": "Prometheus/Grafana stack for metrics. Fluent Bit for shipping logs to CloudWatch Logs.",
+      "cost": "Utilized Spot Instances for stateless worker nodes (saving ~60%). Implemented Karpenter for efficient node scaling.",
+      "tradeoffs": "Increased operational complexity compared to ECS. Required team upskilling on Kubernetes manifests and Helm.",
+      "outcome": "Deployment frequency increased from weekly to daily. 99.99% uptime achieved through multi-AZ node groups."
+    }
+  }
+]
