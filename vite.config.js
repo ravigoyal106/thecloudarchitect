@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   // IMPORTANT: Replace 'cloud-portfolio' with your EXACT GitHub repository name
-  base: '/cloud-portfolio/', 
+  base: '/', 
 })
