@@ -81,4 +81,4 @@ If you want to view the source code or run this React app on your machine:
 I am currently open to **Cloud Engineer** role. If you have an exciting opportunity or just want to chat about cloud tech, feel free to reach out!
 
 * **Location:** [Indore, India]
-* **Email:** [ravi.thecloudarchitect.in]
+* **Email:** [ravi.thecloudarchitect@gmail.com]
