@@ -2,9 +2,8 @@
 
 > **Cloud Engineer | AWS & Linux Enthusiast | DevOps Practitioner**
 
-[![Portfolio](https://img.shields.io/badge/View_Portfolio-Live_Site-blue?style=for-the-badge&logo=github)](https://[YOUR_USERNAME].github.io/[REPO_NAME])
-[![LinkedIn](https://img.shields.io/badge/Connect-LinkedIn-0077B5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/[YOUR_LINKEDIN])
-[![Email](https://img.shields.io/badge/Contact-Email-D14836?style=for-the-badge&logo=gmail)](mailto:[YOUR_EMAIL])
+[![Portfolio](https://img.shields.io/badge/View_Portfolio-Live_Site-blue?style=for-the-badge&logo=github)](https://thecloudarchitect.in)
+[![Email](https://img.shields.io/badge/Contact-Email-D14836?style=for-the-badge&logo=gmail)](mailto:[ravi.thecloudarchitect.in])
 
 ---
 ### ☁️ About Me
