@@ -61,7 +61,7 @@ If you want to view the source code or run this React app on your machine:
 
 1.  **Clone the repository**
     ```bash
-    git clone [https://github.com/](https://github.com/)[YOUR_USERNAME]/[REPO_NAME].git
+    git clone https://github.com/ravigoyal106/thecloudarchitect.git
     ```
 2.  **Install Dependencies**
     ```bash
